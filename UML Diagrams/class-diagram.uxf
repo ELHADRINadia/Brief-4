@@ -1,0 +1,31 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><help_text></help_text><element><id>UMLClass</id><coordinates><x>230</x><y>170</y><w>100</w><h>90</h></coordinates><panel_attributes>Product
+--
+- ProductId : int
+- Name : string
+- Quantity : int
+- Price : int
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>570</x><y>340</y><w>110</w><h>50</h></coordinates><panel_attributes>Employee
+--
+- EmpId : int
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>320</x><y>200</y><w>150</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=0..*
+m2=0..*
+&lt; CRUD</panel_attributes><additional_attributes>10;20;130;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>230</x><y>340</y><w>100</w><h>60</h></coordinates><panel_attributes>Category
+--
+- CatId : int
+- Name : string
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>270</x><y>250</y><w>50</w><h>110</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*</panel_attributes><additional_attributes>10;90;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>340</y><w>110</w><h>50</h></coordinates><panel_attributes>Admin
+--
+- AdminId: int
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>450</x><y>170</y><w>110</w><h>70</h></coordinates><panel_attributes>User
+--
+- Name : string
+- Email : string
+- Password : string
+bg=blue</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>520</x><y>230</y><w>110</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;10;90;110</additional_attributes></element><element><id>Relation</id><coordinates><x>400</x><y>230</y><w>100</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>80;10;10;110</additional_attributes></element><element><id>Relation</id><coordinates><x>470</x><y>350</y><w>120</w><h>50</h></coordinates><panel_attributes>lt=-
+m1=1
+m2=0..*
+CRUD &gt;
+</panel_attributes><additional_attributes>10;20;100;20</additional_attributes></element></diagram>
