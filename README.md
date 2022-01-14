@@ -7,11 +7,16 @@ Conception and Development of an Application to manage the inventory of a store.
 UML Diagrams :
 
 - Use Case Diagram :
-  ![use case diagram](./assets/use-case-diagram.png)
+
+![use case diagram](./assets/use-case-diagram.png)
+
 - Class Diagram :
-  ![class diagram](./assets/class-diagram.png)
+
+![class diagram](./assets/class-diagram.png)
+
 - Sequence Diagram :
-  ![sequence diagram](./assets/sequence-diagram.png)
+
+![sequence diagram](./assets/sequence-diagram.png)
 
 ## Mockups & Prototyping
 
