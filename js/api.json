@@ -1,0 +1,53 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "name": "IPhone 05",
+      "price": 250,
+      "quantity": 100,
+      "image": "./assets/product-1.jpg",
+      "category": "phones"
+    },
+    {
+      "id": 1,
+      "name": "IPhone 08",
+      "price": 350,
+      "quantity": 140,
+      "image": "./assets/product-2.jpg",
+      "category": "phones"
+    },
+    {
+      "id": 2,
+      "name": "Huawei Y5",
+      "price": 190,
+      "quantity": 90,
+      "image": "./assets/product-3.jpg",
+      "category": "phones"
+    },
+    {
+      "id": 3,
+      "name": "Acer Laptop",
+      "price": 550,
+      "quantity": 68,
+      "image": "./assets/product-4.jpg",
+      "category": "laptops"
+    },
+    {
+      "id": 4,
+      "name": "Lenovo ThinkPad",
+      "price": 1500,
+      "quantity": 81,
+      "image": "./assets/product-5.png",
+      "category": "laptops"
+    },
+    {
+      "id": 5,
+      "name": "Samsung Tablet",
+      "price": 150,
+      "quantity": 91,
+      "image": "./assets/product-6.png",
+      "category": "tablets"
+    }
+  ],
+  "categories": ["phones", "laptops", "tablets"]
+}
