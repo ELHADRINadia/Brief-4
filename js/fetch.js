@@ -32,6 +32,19 @@ window.addEventListener("DOMContentLoaded", () => {
             .then((response) => console.log(response))
             .catch((err) => console.log(err));
     };
+    const deleteProduct = (product) => {
+        fetch(API, {
+                method: "DELETE",
+                body: JSON.stringify(product),
+                headers: {
+                    "Content-Type": "application/json",
+
+                },
+            })
+            .then((res) => res.json())
+            .then((response) => console.log(response))
+            .catch((err) => console.log(err));
+    };
     const form = document.querySelector("#add-product-form");
 
     form.addEventListener("submit", (event) => {
@@ -52,7 +65,12 @@ window.addEventListener("DOMContentLoaded", () => {
             image,
         };
 
+        {
+            id: 2
+        }
         // createProduct(data);
-        updateProduct(data)
+        // updateProduct(data);
+        // deleteProduct
+
     });
 });
