@@ -1,61 +1,59 @@
-const getData = async() =>
-    await fetch("./js/api.json", {
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then((response) => response.json());
+import api from "./fetch.js";
+import components from "./components.js";
+import modals from "./modals.js";
+
+// const getData = async () =>
+//   await fetch("./js/api.json", {
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//   }).then((response) => response.json());
 
 /* Products Page */
 
-const { products } = await getData();
+const data = await api.getAll();
 
-const renderProduct = (product) => /*html*/ `
-  <div class="product">
-      <img src=${product.image} alt=${product.name} class="img" />
-      <h3 class="product-name">${product.name}</h3>
-      <div class="product-quantity">
-          <p>${product.quantity}</p>
-          <i class="gg-bookmark"></i>
-      </div>
-      <div class="product-buttons">
-          <div class="product-price">
-              <p>${product.price}</p>
-              <i class="gg-dollar"></i>
-          </div>
-          <div class="buttons">
-              <i class="gg-trash delete-btn" id=${product.id} ></i>
-              <i class="gg-pen edit-btn" onclick="showModal(${product.id})" ></i>
-          </div>
-      </div>
-  </div>`;
-
-const renderProducts = (products) => {
-    const container = document.querySelector(".products");
-    let html = "";
-    products.forEach((product) => (html += renderProduct(product)));
-    container.innerHTML = html;
+const refresh = async () => {
+  const data = await api.getAll();
+  console.log(data);
+  renderProducts(data);
 };
 
-renderProducts(products);
+const renderProducts = ({ products, count }) => {
+  const container = document.querySelector(".products");
+  if (count > 0) {
+    let html = "";
+    products.forEach((product) => (html += components.Product(product)));
+    container.innerHTML = html;
+
+    modals.startModals(refresh);
+  } else {
+    container.innerHTML = components.Empty();
+  }
+};
+
+renderProducts(data);
 
 // Filter Products
 
 //Filter by searching product name
 const search = document.querySelector("#search");
 search.oninput = () => {
-    const searched = products.filter(({ name }) => name.includes(search.value));
-    renderProducts(searched);
+  const searched = data.products.filter(({ name }) =>
+    name.includes(search.value)
+  );
+  renderProducts({ products: searched, count: searched.length });
 };
 
 //Filter by category
-const categorySelector = document.querySelector("#category");
+const categorySelector = document.querySelector("#category-filter");
 categorySelector.onchange = () => {
-    if (categorySelector.value != "all") {
-        const filtered = products.filter(({ category }) =>
-            category.includes(categorySelector.value)
-        );
-        renderProducts(filtered);
-    } else renderProducts(products);
+  if (categorySelector.value != "all") {
+    const filtered = data.products.filter(({ category }) =>
+      category.includes(categorySelector.value)
+    );
+    renderProducts({ products: filtered, count: filtered.length });
+  } else renderProducts(data);
 };
 
 // Sorting
@@ -73,97 +71,47 @@ categorySelector.onchange = () => {
 
 import "https://cdn.jsdelivr.net/npm/chart.js"; //chart js
 
-const data = {
-    labels: ["Phones", "Laptops", "Tablets"],
-    datasets: [{
-        label: "My First Dataset",
-        data: [300, 50, 100],
-        backgroundColor: [
-            "rgb(255, 99, 132)",
-            "rgb(54, 162, 235)",
-            "rgb(255, 205, 86)",
-        ],
-        hoverOffset: 4,
-    }, ],
+const chartData = {
+  labels: ["Phones", "Laptops", "Tablets"],
+  datasets: [
+    {
+      label: "My First Dataset",
+      data: [300, 50, 100],
+      backgroundColor: [
+        "rgb(255, 99, 132)",
+        "rgb(54, 162, 235)",
+        "rgb(255, 205, 86)",
+      ],
+      hoverOffset: 4,
+    },
+  ],
 };
 
 new Chart("chart", {
-    type: "pie",
-    data,
+  type: "pie",
+  data: chartData,
 });
 
-// Modals
+// Add Product Page
 
-// const buttons = document.querySelectorAll(".delete-btn");
+const form = document.querySelector("#add-product-form");
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
 
-const deleteProductButtons = document.querySelectorAll(".delete-btn");
-const editProductButtons = document.querySelectorAll(".edit-btn");
+  let formData = new FormData();
+  const name = document.querySelector("#name").value;
+  const price = document.querySelector("#price").value;
+  const quantity = document.querySelector("#quantity").value;
+  const category = document.querySelector("#category").value;
+  const image = document.querySelector("#image").files[0];
 
-const showModal = (modal, productId) => {
-    const modalContent = document.querySelector(".modal-content");
-    modal.style.display = "flex";
-    // const renderProductToDelete = (product) => /*html*/ `
-    // <div>
-    //     <img src=${product.image} alt=${product.name} />
-    //     <h3>${product.name}</h3>
-    //     <div>
-    //         <p>${product.quantity}</p>
-    //         <i class="gg-bookmark"></i>
-    //             <p>${product.price}</p>
-    //             <i class="gg-dollar"></i>
-    //     </div>
-    // </div>`;
-    // modalContent.innerHTML = renderProductToDelete(
-    //   products.find((product) => product.id == productId)
-    // );
-};
-const hideModals = () => {
-    const modals = document.querySelectorAll(".modal");
-    modals.forEach((modal) => (modal.style.display = "none"));
-};
+  formData.append("name", name);
+  formData.append("price", price);
+  formData.append("quantity", quantity);
+  formData.append("category", category);
+  formData.append("image", image);
 
-deleteProductButtons.forEach(
-    (btn) =>
-    (btn.onclick = function() {
-        const modal = document.querySelector(".delete-product-modal");
-        showModal(modal, this.id);
-    })
-);
-editProductButtons.forEach(
-    (btn) =>
-    (btn.onclick = function() {
-        const modal = document.querySelector(".edit-product-modal");
-        showModal(modal, this.id);
-    })
-);
-
-window.onclick = function(event) {
-    const deleteProductModal = document.querySelector(".delete-product-modal");
-    const editProductModal = document.querySelector(".edit-product-modal");
-
-    if (event.target == deleteProductModal || event.target == editProductModal) {
-        hideModals();
-    }
-};
-
-// Delete Product Modal
-
-// http://localhost/local.dev/
-
-const sendData = async() =>
-    fetch("http://localhost/local.dev/", {
-        // Adding method type
-        method: "POST",
-
-        // Adding body or contents to send
-        body: {
-            title: "foo",
-            body: "bar",
-            userId: 1,
-        },
-
-        // Adding headers to the request
-        headers: {
-            "Content-type": "application/json; charset=UTF-8",
-        },
-    });
+  api.create(formData).then((response) => {
+    refresh();
+  });
+});
