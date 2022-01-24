@@ -1,7 +1,9 @@
 <?php
 
-    function get_single_product($id){
+    function get_single_product(){
         $conn = include '../connect.php';
+
+        $id = $_GET['id'];
 
         $sql = mysqli_query($conn,"SELECT * FROM products WHERE id = '$id'");
         $result = mysqli_fetch_all($sql,MYSQLI_ASSOC);

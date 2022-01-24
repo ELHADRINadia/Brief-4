@@ -13,10 +13,13 @@ import modals from "./modals.js";
 
 const data = await api.getAll();
 
+// const sorted = await api.getAllSorted("price", "asc");
+// console.log(sorted);
+
 const refresh = async () => {
   const data = await api.getAll();
-  console.log(data);
   renderProducts(data);
+  renderStatistics(data);
 };
 
 const renderProducts = ({ products, count }) => {
@@ -71,26 +74,46 @@ categorySelector.onchange = () => {
 
 import "https://cdn.jsdelivr.net/npm/chart.js"; //chart js
 
-const chartData = {
-  labels: ["Phones", "Laptops", "Tablets"],
-  datasets: [
-    {
-      label: "My First Dataset",
-      data: [300, 50, 100],
-      backgroundColor: [
-        "rgb(255, 99, 132)",
-        "rgb(54, 162, 235)",
-        "rgb(255, 205, 86)",
-      ],
-      hoverOffset: 4,
-    },
-  ],
-};
+const renderStatistics = ({ products, count }) => {
+  document.querySelector(".statistics-total-products").textContent = count;
+  let totalCost = 0;
+  products.forEach(({ price }) => {
+    totalCost += Number(price);
+  });
+  let totalQuantities = 0;
+  products.forEach(({ quantity }) => {
+    totalQuantities += Number(quantity);
+  });
+  document.querySelector(".statistics-total-cost").textContent = totalCost;
+  document.querySelector(".statistics-total-quantities").textContent =
+    totalQuantities;
 
-new Chart("chart", {
-  type: "pie",
-  data: chartData,
-});
+  const chartData = {
+    labels: ["Phones", "Laptops", "Tablets"],
+    datasets: [
+      {
+        label: "Statistics",
+        data: [
+          products.filter(({ category }) => category == "phones").length,
+          products.filter(({ category }) => category == "laptops").length,
+          products.filter(({ category }) => category == "tablets").length,
+        ],
+        backgroundColor: [
+          "rgb(255, 99, 132)",
+          "rgb(54, 162, 235)",
+          "rgb(255, 205, 86)",
+        ],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  new Chart("chart", {
+    type: "pie",
+    data: chartData,
+  });
+};
+renderStatistics(data);
 
 // Add Product Page
 

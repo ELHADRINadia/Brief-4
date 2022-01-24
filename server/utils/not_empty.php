@@ -1,10 +1,10 @@
 <?php
     function not_empty($array){
-        if (empty($array) || !isset($array)) {
+        if (!isset($array) || empty($array) ) {
             return false;
         }
         foreach($array as $key => $value) {
-            if (empty($value) || !isset($value)) {
+            if (!isset($value) || empty($value)) {
                 return false;
             }
         }

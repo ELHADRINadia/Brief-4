@@ -246,7 +246,7 @@ body {
 
 .container .statistics-page,
 .container .add-product-page,
-.container .add-employee-page {
+.container .rapports-page {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
