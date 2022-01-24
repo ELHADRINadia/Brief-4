@@ -1,4 +1,4 @@
-const API = "server/api/products.php";
+const API = "server/api/employé.php";
 
 export default {
     getAll: async() => {
@@ -17,18 +17,18 @@ export default {
             console.log(err);
         }
     },
-    create: async(product) => {
+    create: async(employe) => {
         try {
             const response = await fetch(API, {
                 method: "POST",
-                body: product,
+                body: employe,
             });
             return response.json();
         } catch (error) {
             console.log(error);
         }
     },
-    update: async(product) => {
+    update: async(employé) => {
         try {
             const response = await fetch(API, {
                 method: "PUT",
