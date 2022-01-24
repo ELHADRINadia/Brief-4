@@ -1,16 +1,16 @@
 <?php
 
-    function get_searched_products(){
+    function get_products_by_category(){
         $conn = include '../connect.php';
         
-        $search = $_GET['search'];
+        $category = $_GET['category'];
 
-        $sql = mysqli_query($conn,"SELECT * FROM products WHERE name LIKE '%$search%'");
+        $sql = mysqli_query($conn,"SELECT * FROM products WHERE category = '$category'");
         $result = mysqli_fetch_all($sql,MYSQLI_ASSOC);
 
         $count = count($result);
         if ($count < 1) {
-            $response = ["status" => "failed", "message" => "Oops! No results for '$search'."];
+            $response = ["status" => "failed", "message" => "No products with category '$category' were found."];
         } else {
            $response = ["status" => "success", "products" => $result, "count" => $count];
         }

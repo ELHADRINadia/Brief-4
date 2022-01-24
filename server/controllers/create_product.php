@@ -3,7 +3,7 @@
 
     function create_product()
     {
-        if (not_empty($_POST) && not_empty([$_POST['name'],$_POST['price'],$_POST['quantity'],$_POST['category'],$_FILES['image']])) {
+        if (not_empty_and_keys_exist($_POST,['name','price','quantity','category']) && not_empty_and_keys_exist($_FILES,['image'])) {
             $conn = include '../connect.php';
 
             $name = $_POST['name'];

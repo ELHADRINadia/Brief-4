@@ -7,18 +7,6 @@
     <title>ShopNow</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <link href="https://css.gg/css" rel="stylesheet" />
-<<<<<<< HEAD
-    <script src="./js/app.js" type="module"></script>
-    <script src="./js/navigation.js"></script>
-</head>
-
-<body>
-    <aside class="sidebar">
-        <span id="products-page" class="gg-home icon active-tab"></span>
-        <span id="statistics-page" class="gg-insights icon"></span>
-        <span id="add-product-page" class="gg-add-r icon"></span>
-        <span id="add-employee-page" class="gg-user icon"></span>
-=======
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
@@ -32,7 +20,6 @@
       <span id="statistics-page" class="gg-insights icon"></span>
       <span id="add-product-page" class="gg-add-r icon"></span>
       <!-- <span id="rapports-page" class="gg-notes icon"></span> -->
->>>>>>> 445ae1ab5224f13772a533f1dbd3e114625c70ac
     </aside>
     <main class="container">
       <header>
@@ -67,13 +54,13 @@
         <div>
           <label for="sort">Sort By</label>
           <div class="input">
-            <select name="sort">
-              <option value="0" selected>Latest Added</option>
-              <option value="1">Earliest Added</option>
-              <option value="2">Highest Quantity</option>
-              <option value="3">Lowest Quantity</option>
-              <option value="4">Highest Price</option>
-              <option value="5">Lowest Price</option>
+            <select name="sort" id="sort">
+              <option value="added_at:desc" selected>Latest Added</option>
+              <option value="added_at:asc">Earliest Added</option>
+              <option value="quantity:desc">Highest Quantity</option>
+              <option value="quantity:asc">Lowest Quantity</option>
+              <option value="price:desc">Highest Price</option>
+              <option value="price:asc">Lowest Price</option>
             </select>
             <i class="gg-sort-az"></i>
           </div>
@@ -104,8 +91,8 @@
             </div>
           </div>
         </section>
-        <div>
-          <canvas id="chart" style="max-height: 40vh"></canvas>
+        <div id="chart-container">
+          <canvas id="chart" style="max-height: 40vmin; width: 100%"></canvas>
         </div>
       </section>
       <section class="add-product-page">
@@ -133,43 +120,11 @@
                 <option value="laptops">Laptops</option>
                 <option value="tablets">Tablets</option>
               </select>
-<<<<<<< HEAD
-                    </div>
-                    <div class="input">
-                        <label for="image">Image</label>
-                        <input type="file" accept="image/*" id="image" />
-                    </div>
-
-                    <input type="submit" value="Add" />
-                </div>
-            </form>
-        </section>
-        <section class="add-employee-page">
-            <div class="headings">
-                <h2 class="title">Add Employé</h2>
-            </div>
-            <form action="">
-                <div class="inputs">
-                    <div class="input">
-                        <label for="name">name</label>
-                        <input type="text" name="name" id="" />
-                    </div>
-                    <div class="input">
-                        <label for="Email">email</label>
-                        <input type="email" name="email" id="" />
-                    </div>
-                    <div class="input">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="" />
-                    </div>
-
-=======
             </div>
             <div class="input">
               <label for="image">Image</label>
               <input type="file" accept="image/*" id="image" />
             </div>
->>>>>>> 445ae1ab5224f13772a533f1dbd3e114625c70ac
 
             <input type="submit" value="Add" />
           </div>

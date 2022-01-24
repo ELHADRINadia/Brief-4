@@ -70,5 +70,5 @@ export default {
           <i class="gg-trash" ></i>
         </div>
     </div>`,
-  Empty: () => /*html*/ `<h3 class="empty">No Products are added yet.</h3>`,
+  Empty: (text) => /*html*/ `<h3 class="empty">${text}</h3>`,
 };
