@@ -171,17 +171,26 @@ body {
 
   .products {
     // background: $primary;
-    @include flex($justify: space-between, $items: center);
+    @include flex($justify: space-between);
     width: 100%;
     height: 100%;
     flex-wrap: wrap;
     gap: 1rem;
     overflow-y: auto;
 
+    .empty {
+      @include font($poppins, 1em, 600);
+      color: $dark-gray;
+      width: 100%;
+      height: 100%;
+      padding-top: 12rem;
+
+      text-align: center;
+    }
+
     .product {
       @include flex(column, center, center);
       background-color: $light-blue;
-      align-content: flex-start;
       width: 25%;
       height: 14em;
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
@@ -200,6 +209,7 @@ body {
         @include font($poppins, 1em);
         color: $dark-gray;
         padding: 0.5rem;
+        text-align: center;
       }
       .product-quantity,
       .product-price {
@@ -214,16 +224,15 @@ body {
         }
       }
       .product-buttons {
-        @include flex(row, space-between, center);
-        width: 50%;
+        @include flex(row, center, center);
         padding: 0.5rem;
         .buttons {
-          @include flex(row, space-between, center);
-          width: 50%;
+          @include flex(row, space-evenly, center);
           padding-left: 1rem;
           i {
             color: $dark-gray;
             --ggs: 1;
+            margin: 0rem 0.8rem;
             cursor: pointer;
           }
           .delete-btn {
@@ -249,12 +258,64 @@ body {
   height: 100%;
   background-color: rgba($darker-gray, 0.5);
   .modal-content {
-    @include flex(column, center, center);
+    @include flex(row, center, center);
     background-color: $surface;
     margin: auto;
     width: 40%;
-    height: 80%;
+    // height: 80%;
     border-radius: 6px;
+    padding: 2rem;
+    img {
+      width: 50%;
+      height: 15em;
+      object-fit: contain;
+    }
+    .product-details {
+      @include flex(column, center, center);
+      width: 50%;
+      padding-left: 2rem;
+
+      .product-name {
+        @include font($poppins, 1.2em);
+        color: $darker-gray;
+        padding: 0.5rem 0;
+        text-align: center;
+      }
+      .product-info {
+        @include flex(row);
+        .product-quantity,
+        .product-price {
+          @include flex($items: center);
+          @include font($poppins, 1em);
+          padding: 0rem 0.5rem;
+          color: $dark-gray;
+          p {
+            padding-right: 0.5rem;
+          }
+          i {
+            --ggs: 0.8;
+          }
+        }
+      }
+
+      .button {
+        @include flex(row, center, center);
+        margin-top: 0.5rem;
+        padding: 0.5rem 0.4rem;
+        width: fit-content;
+        background-color: #dc2626;
+        border-radius: 4px;
+        color: $light-gray;
+        cursor: pointer;
+        p {
+          @include font($poppins, 1em);
+        }
+        i {
+          --ggs: 1;
+          margin: 0rem 0.8rem;
+        }
+      }
+    }
   }
 }
 .add-product-form {
@@ -279,6 +340,10 @@ body {
     margin-top: 0.5rem;
   }
 }
+.row {
+  @include flex();
+}
+
 form {
   @include flex(column, center, center);
   flex: 1;
@@ -295,6 +360,7 @@ form {
         margin-bottom: 0.8rem;
       }
       input,
+      select,
       textarea {
         @include font($poppins, 1em, 400);
         color: $darker-gray;

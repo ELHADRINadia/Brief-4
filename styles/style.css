@@ -335,15 +335,26 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   width: 100%;
   height: 100%;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 1rem;
   overflow-y: auto;
+}
+
+.container .products .empty {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  font-weight: 600;
+  color: #374151;
+  width: 100%;
+  height: 100%;
+  padding-top: 12rem;
+  text-align: center;
 }
 
 .container .products .product {
@@ -361,8 +372,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   background-color: #eff6ff;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
   width: 25%;
   height: 14em;
   -webkit-box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
@@ -385,6 +394,7 @@ body {
   font-weight: 500;
   color: #374151;
   padding: 0.5rem;
+  text-align: center;
 }
 
 .container .products .product .product-quantity,
@@ -426,13 +436,12 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
   padding: 0.5rem;
 }
 
@@ -444,19 +453,19 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 50%;
   padding-left: 1rem;
 }
 
 .container .products .product .product-buttons .buttons i {
   color: #374151;
   --ggs: 1;
+  margin: 0rem 0.8rem;
   cursor: pointer;
 }
 
@@ -483,6 +492,34 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #dbeafe;
+  margin: auto;
+  width: 40%;
+  border-radius: 6px;
+  padding: 2rem;
+}
+
+.modal .modal-content img {
+  width: 50%;
+  height: 15em;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.modal .modal-content .product-details {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -493,11 +530,101 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #dbeafe;
-  margin: auto;
-  width: 40%;
-  height: 80%;
-  border-radius: 6px;
+  width: 50%;
+  padding-left: 2rem;
+}
+
+.modal .modal-content .product-details .product-name {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #111827;
+  padding: 0.5rem 0;
+  text-align: center;
+}
+
+.modal .modal-content .product-details .product-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.modal .modal-content .product-details .product-info .product-quantity,
+.modal .modal-content .product-details .product-info .product-price {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+  padding: 0rem 0.5rem;
+  color: #374151;
+}
+
+.modal .modal-content .product-details .product-info .product-quantity p,
+.modal .modal-content .product-details .product-info .product-price p {
+  padding-right: 0.5rem;
+}
+
+.modal .modal-content .product-details .product-info .product-quantity i,
+.modal .modal-content .product-details .product-info .product-price i {
+  --ggs: 0.8;
+}
+
+.modal .modal-content .product-details .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 0.5rem;
+  padding: 0.5rem 0.4rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: #dc2626;
+  border-radius: 4px;
+  color: #f9fafb;
+  cursor: pointer;
+}
+
+.modal .modal-content .product-details .button p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.modal .modal-content .product-details .button i {
+  --ggs: 1;
+  margin: 0rem 0.8rem;
 }
 
 .add-product-form {
@@ -554,6 +681,22 @@ body {
   margin-top: 0.5rem;
 }
 
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
 form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -605,6 +748,7 @@ form .inputs .input label {
 }
 
 form .inputs .input input,
+form .inputs .input select,
 form .inputs .input textarea {
   font-family: "Poppins", sans-serif;
   font-size: 1em;
@@ -619,6 +763,7 @@ form .inputs .input textarea {
 }
 
 form .inputs .input input:focus,
+form .inputs .input select:focus,
 form .inputs .input textarea:focus {
   border: 2px solid #60a5fa;
 }

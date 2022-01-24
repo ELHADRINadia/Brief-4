@@ -5,6 +5,10 @@ body {
     background-size: 100% 720px;
 }
 
+img {
+    border-radius: 4%;
+}
+
 .container {
     width: 500px;
     height: 450px;

@@ -14,7 +14,7 @@
     <script src="./js/app.js" type="module"></script>
     <script src="./js/charts.js" type="module"></script>
     <script src="./js/navigation.js"></script>
-    <script src="./js/fetch.js"></script>
+    <script src="./js/modals.js" type="module"></script>
   </head>
   <body>
     <aside class="sidebar">
@@ -26,12 +26,12 @@
     <main class="container">
       <header>
         <h1 class="logo">ShopNow</h1>
-        <div class="user">
+        <!-- <div class="user">
           <div class="name">
             <h3>Nadia ELHADRI</h3>
             <div class="gg-log-out"></div>
           </div>
-        </div>
+        </div> -->
       </header>
       <section class="filters products-page">
         <div>
@@ -42,9 +42,9 @@
           </div>
         </div>
         <div>
-          <label for="category">Category</label>
+          <label for="category-filter">Category</label>
           <div class="input">
-            <select id="category">
+            <select id="category-filter">
               <option value="all" selected>All</option>
               <option value="phones">Phones</option>
               <option value="laptops">Laptops</option>
@@ -57,10 +57,12 @@
           <label for="sort">Sort By</label>
           <div class="input">
             <select name="sort">
-              <option value="0">Highest Quantity</option>
-              <option value="1">Lowest Quantity</option>
-              <option value="2">Highest Price</option>
-              <option value="3">Lowest Price</option>
+              <option value="0" selected>Latest Added</option>
+              <option value="1">Earliest Added</option>
+              <option value="2">Highest Quantity</option>
+              <option value="3">Lowest Quantity</option>
+              <option value="4">Highest Price</option>
+              <option value="5">Lowest Price</option>
             </select>
             <i class="gg-sort-az"></i>
           </div>
@@ -102,24 +104,28 @@
         <form id="add-product-form">
           <div class="inputs">
             <div class="input">
-              <label for="Name">Name</label>
+              <label for="Name">Name </label>
               <input type="text" id="name" />
             </div>
             <div class="input">
-              <label for="Price">Price</label>
+              <label for="price">Price</label>
               <input type="text" id="price" />
             </div>
             <div class="input">
-              <label for="Quantity">Quantity</label>
+              <label for="quantity">Quantity</label>
               <input type="text" id="quantity" />
             </div>
             <div class="input">
-              <label for="category">category</label>
-              <input type="text" id="category" />
+              <label for="category">Category</label>
+              <select id="category">
+                <option value="phones">Phones</option>
+                <option value="laptops">Laptops</option>
+                <option value="tablets">Tablets</option>
+              </select>
             </div>
             <div class="input">
-              <label for="image">image</label>
-              <input type="file" id="image" />
+              <label for="image">Image</label>
+              <input type="file" accept="image/*" id="image" />
             </div>
 
             <input type="submit" value="Add" />
@@ -149,14 +155,10 @@
     </main>
     <!-- Modals -->
     <div class="modal delete-product-modal">
-      <div class="modal-content">
-        <p>Some text in the delete Modal..</p>
-      </div>
+      <div class="modal-content delete-product-modal-content"></div>
     </div>
     <div class="modal edit-product-modal">
-      <div class="modal-content">
-        <p>Some text in the edit Modal..</p>
-      </div>
+      <div class="modal-content edit-product-modal-content"></div>
     </div>
   </body>
 </html>

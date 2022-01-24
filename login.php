@@ -9,8 +9,7 @@
 
 
 <?php
-// $db="app_stage";
-// $bdd=new PDO('mysql:host=localhost;dbname=app_stage','root','');
+// $bdd=new PDO('mysql:host=localhost;dbname=inventory','root','');
 $c=mysqli_connect('localhost','root','','inventory');
 
 
@@ -36,7 +35,7 @@ if(isset($_POST['submit'])){
     // if(mysql_num_rows($result)==1){
     //     echo " You Have Successfully Logged in";
 	// 	exit();
-    //     // header('Location:Home.php');
+    //     // header('Location:index.html');
     // }
     // else{
     //     echo " You Have Entered Incorrect Password";
@@ -54,12 +53,12 @@ if(isset($_POST['submit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ShopNow - Login</title>
-<link rel="stylesheet" href="./styles/login.css" />
+<link rel="stylesheet" href="./styles/login.css" /> 
 </head>
 <body>
 <body>
 	<div class="container">
-	<img src="log4.jpg"/>
+	<img src="assets/log.jpg"/>
 		<form method="POST" action="login.php">
 			<div class="form-input">
 				<input type="text" name="text" required placeholder="Enter the User Name"/>	
