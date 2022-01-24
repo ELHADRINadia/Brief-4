@@ -26,6 +26,7 @@ if(isset($_POST['submit'])){
     $result=mysqli_query($c,$sqlnamePass);
 	while($rows=mysqli_fetch_array($result)){
 		if($rows['User']==$uname && $rows["Pass"]==$password){
+      header('Location:index.html');
 		}else{
 			echo "<script> alert('You Have Entered Incorrect Password');</script>";
 		}
