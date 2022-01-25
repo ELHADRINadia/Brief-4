@@ -21,6 +21,7 @@ export default {
       </div>
   </div>`,
   ProductToEdit: (product) => /*html*/ `
+    <i class="gg-arrow-left close-modal-btn"></i>
     <img src=${"./server/uploads/" + product.image} alt=${
     product.name
   } class="img" />
@@ -50,6 +51,7 @@ export default {
       </div>
     </form>`,
   ProductToDelete: (product) => /*html*/ `
+    <i class="gg-arrow-left close-modal-btn"></i>
     <img src=${"./server/uploads/" + product.image} alt=${
     product.name
   } class="img" />

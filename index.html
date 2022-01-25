@@ -7,10 +7,6 @@
     <title>ShopNow</title>
     <link rel="stylesheet" href="./styles/style.css" />
     <link href="https://css.gg/css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
-    />
     <script src="./js/app.js" type="module"></script>
     <script src="./js/navigation.js"></script>
   </head>
@@ -19,7 +15,6 @@
       <span id="products-page" class="gg-home icon active-tab"></span>
       <span id="statistics-page" class="gg-insights icon"></span>
       <span id="add-product-page" class="gg-add-r icon"></span>
-      <!-- <span id="rapports-page" class="gg-notes icon"></span> -->
     </aside>
     <main class="container">
       <header>
@@ -91,7 +86,7 @@
             </div>
           </div>
         </section>
-        <div id="chart-container">
+        <div class="chart-container">
           <canvas id="chart" style="max-height: 40vmin; width: 100%"></canvas>
         </div>
       </section>
@@ -127,26 +122,6 @@
             </div>
 
             <input type="submit" value="Add" />
-          </div>
-        </form>
-      </section>
-      <section class="rapports-page">
-        <div class="headings">
-          <h2 class="title">Add Rapport</h2>
-        </div>
-        <form action="">
-          <div class="inputs">
-            <div class="input">
-              <label for="Title">Title</label>
-              <input type="text" name="Title" id="" />
-            </div>
-            <div class="input">
-              <label for="Message">Message</label>
-              <textarea name="Message" rows="5" id=""></textarea>
-            </div>
-
-            <input type="submit" value="Save" />
-            <input type="reset" value="Reset" />
           </div>
         </form>
       </section>

@@ -1,11 +1,6 @@
 window.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll("aside .icon");
-  const pages = [
-    "products-page",
-    "statistics-page",
-    "add-product-page",
-    "add-employee-page",
-  ];
+  const pages = ["products-page", "statistics-page", "add-product-page"];
   const navigate = (name) => {
     tabs.forEach((tab) =>
       tab.id === name

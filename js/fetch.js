@@ -82,18 +82,4 @@ export default {
       console.log(error);
     }
   },
-  checkUser: async (username, password) => {
-    try {
-      const response = await fetch(API, {
-        method: "POST",
-        body: JSON.stringify({ username, password }),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      return response.json();
-    } catch (error) {
-      console.log(error);
-    }
-  },
 };

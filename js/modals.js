@@ -12,6 +12,10 @@ const modals = {
     const { product } = await api.getOne(productId);
 
     modalContent.innerHTML = components.ProductToDelete(product);
+
+    document.querySelector(".close-modal-btn").onclick = () =>
+      modals.hideModal(modal);
+
     document.querySelector(".delete-product").onclick = () => {
       api.delete(productId).then(() => {
         refresh();
@@ -34,7 +38,12 @@ const modals = {
       product.quantity;
     document.querySelector("#product-to-edit-category").value =
       product.category;
+
     const editProductForm = document.querySelector("#edit-product-form");
+
+    document.querySelector(".close-modal-btn").onclick = () =>
+      modals.hideModal(modal);
+
     editProductForm.addEventListener("submit", (event) => {
       event.preventDefault();
       api

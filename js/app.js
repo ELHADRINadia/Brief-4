@@ -6,9 +6,6 @@ import modals from "./modals.js";
 
 const data = await api.getAll();
 
-// const sorted = await api.getAllSorted("price", "asc");
-// console.log(sorted);
-
 const refresh = async () => {
   const data = await api.getAll();
   renderProducts(data);
@@ -57,7 +54,6 @@ category.onchange = () => {
 const sort = document.querySelector("#sort");
 sort.onchange = ({ target: { value } }) => {
   const [sortedBy, order] = value.split(":");
-  // console.log({ sortedBy, order });
   api.getAllSorted(sortedBy, order).then((results) => {
     renderProducts(results);
   });
@@ -70,8 +66,8 @@ import "https://cdn.jsdelivr.net/npm/chart.js"; //chart js
 const renderStatistics = ({ products, count }) => {
   document.querySelector(".statistics-total-products").textContent = count;
   let totalCost = 0;
-  products.forEach(({ price }) => {
-    totalCost += Number(price);
+  products.forEach(({ quantity, price }) => {
+    totalCost += Number(quantity) * Number(price);
   });
   let totalQuantities = 0;
   products.forEach(({ quantity }) => {
@@ -97,6 +93,7 @@ const chartData = {
         "rgb(54, 162, 235)",
         "rgb(255, 205, 86)",
       ],
+      color: "#fff",
       hoverOffset: 4,
     },
   ],

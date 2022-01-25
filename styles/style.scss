@@ -248,7 +248,7 @@ body {
 
     &:after {
       content: "";
-      width: 18em;
+      width: calc(18em + 2rem);
     }
   }
 }
@@ -270,6 +270,16 @@ body {
     // height: 80%;
     border-radius: 6px;
     padding: 2rem;
+    position: relative;
+    .close-modal-btn {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 1rem;
+      --ggs: 1.2;
+      color: $darker-gray;
+      cursor: pointer;
+    }
     img {
       width: 15em;
       height: 15em;
@@ -323,15 +333,10 @@ body {
     }
   }
 }
-.add-product-form {
-  @include flex(column);
-  max-width: 80vw;
-  max-height: 80vh;
-  background-color: $light-blue;
-  border: 1px solid $primary;
-  border-top-width: 10px;
-  border-radius: 5px;
-  padding: 1rem;
+.add-product-page {
+  @include flex(column, center, center);
+  width: 100%;
+  height: 100%;
 }
 .headings {
   @include flex(column, center, center);
@@ -342,18 +347,20 @@ body {
   .title {
     @include font($poppins, 1.8em);
     color: $dark-gray;
-    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
 }
 .row {
   @include flex();
 }
+.chart-container {
+  @include flex(column, center, center);
+  width: 100%;
+  height: 50vh;
+}
 
 form {
   @include flex(column, center, center);
-  flex: 1;
-  width: 100%;
-  height: 100%;
   .inputs {
     width: 45vh;
     padding: 1rem;
@@ -380,8 +387,7 @@ form {
         }
       }
     }
-    input[type="submit"],
-    input[type="reset"] {
+    input[type="submit"] {
       width: 100%;
       @include font($poppins, 1em, 400);
       background-color: $primary;
@@ -392,10 +398,42 @@ form {
       margin-top: 0.5rem;
       cursor: pointer;
     }
-    input[type="reset"] {
-      background-color: $light-gray;
-      color: $dark-gray;
-      border-color: $dark-gray;
+  }
+}
+
+@media (max-width: 1111px) {
+  .container {
+    .products {
+      justify-content: center;
+    }
+  }
+}
+
+@media (max-width: 656px) {
+  .modal .modal-content .product-details {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  form .inputs {
+    width: auto;
+    .input {
+      width: 60vw;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .container {
+    .products {
+      .product {
+        width: 14em;
+      }
+      &:after {
+        content: "";
+        width: 0;
+      }
     }
   }
 }
