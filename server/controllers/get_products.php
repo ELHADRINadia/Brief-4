@@ -1,5 +1,4 @@
 <?php
-
     function get_products(){
         $conn = include '../connect.php';
         

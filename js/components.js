@@ -2,7 +2,7 @@ export default {
   Product: (product) => /*html*/ `
   <div class="product">
       <img src=${"./server/uploads/" + product.image} alt=${
-    product.name
+    product.name 
   } class="img" />
       <h3 class="product-name">${product.name}</h3>
       <div class="product-quantity">
